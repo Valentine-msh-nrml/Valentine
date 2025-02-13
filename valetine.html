@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Proposal</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: pink;
+        }
+        img {
+            width: 200px;
+            transition: all 0.5s ease;
+        }
+        #question {
+            font-size: 24px;
+            margin: 20px;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        #yes {
+            background-color: red;
+            color: white;
+        }
+        #no {
+            background-color: white;
+            color: black;
+        }
+        .hidden {
+            display: none;
+        }
+        #fireworks {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <img id="valentine-img" src="./valen_images/tiddybear.png" alt="Valentine">
+    <div id="question">Would you be my Valentine?</div>
+    <button id="yes" class="btn" onclick="showFireworks()">Yes</button>
+    <button id="no" class="btn" onclick="changeButtons()">No</button>
+    
+    <div id="fireworks">
+        🥳🥳 YeeeeeeeY !!🥳🥳
+        I LOVE YOU! 🎆🎇</div>
+
+    <script>
+        let noClickCount = 0;
+        let images = [
+            "./valen_images/glowyeyes.png",
+            "./valen_images/glowyeyes_extra.png",
+            "./valen_images/really.png",
+            "./valen_images/come_on.jpeg",
+            "./valen_images/one_tear.png",
+            "./valen_images/angry.png",
+            "./valen_images/devil.png"
+
+            ];
+        let Yes_replacement = [
+            "PLZ", "pleeeeeaaaaaase","Reallyyyy ??", "Coooomeeee ooooon !!", "U R Kidding, Right ?", "Last Chance !", "I'm out of options 3:)"
+
+        ];
+        let fireworks_text = [
+            "I Love Youuuu\n To the m🌕🌕🌕🌕n and back !", "It's an Honor my beautiful angel 😘", "nhebhk baaarshaaaaa3\n Yaaa Katkoutaaaaaaaa33 ❤❤ ", "🥺 ija aand baba ija 🥺"
+        ]
+        let amalthom_maaya = [
+            "Walahi le te7shemha x/ ama\n",
+            "Bl ri9 l cheye7 maaneha ? but \n",
+            "Ye 5oya Ye 5oya aala hel tofla... \n",
+            "Aslan 3andk 7all e5er ? 😏\n "
+        ]
+        function changeButtons() {
+            document.getElementById('valentine-img').src = images[noClickCount % images.length];
+            noClickCount++;
+            document.getElementById('yes').innerText =Yes_replacement[noClickCount];
+            document.getElementById('yes').style.fontSize = (20 + noClickCount * 30) + "px";
+            document.getElementById('no').style.fontSize = (20 - noClickCount * 3) + "px";
+            
+            if (noClickCount >= 6) {
+                document.getElementById('no').style.display = "none";
+                document.getElementById('yes').style.width = "100vw";
+                document.getElementById('yes').style.height = "100vh";
+                document.getElementById('yes').style.fontSize = "50px";
+
+            }
+        }
+        let randomInt = Math.floor(Math.random() * 4);
+        function showFireworks() {
+            zeyed ="";
+            if (noClickCount > 0){
+                zeyed = amalthom_maaya[randomInt];
+            }
+            document.getElementById('fireworks').innerText = zeyed+fireworks_text[randomInt]
+            document.getElementById('fireworks').style.display = "flex";
+        }
+    </script>
+</body>
+</html>
